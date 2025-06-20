@@ -477,7 +477,14 @@ const NavItem : React.FC<NavItemProps> = ({ icon, children, active, onClick }) =
   </button>
 );
 
-const StatCard = ({ icon, title, value, change }) => (
+type StatCardProps = {
+  icon: React.ReactNode;
+  title: string;
+  value: number;
+  change: string;
+};
+
+const StatCard: React.FC<StatCardProps> = ({ icon, title, value, change }) => (
   <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
     <div className="flex justify-between">
       <div>
