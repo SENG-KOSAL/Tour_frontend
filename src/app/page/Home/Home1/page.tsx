@@ -4,8 +4,17 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+type Tour = {
+  tour_id: number;
+  destination: string;
+  image_url: string;
+  price_per_person: number;
+  title: string;
+  description: string;
+};
+
 export default function TravelPackages() {
-  const [tours, setTours] = useState([]);
+  const [tours, setTours] = useState<Tour[]>([]);
   const router = useRouter();
 
   const handleBookingClick = (tourId: any) => {
