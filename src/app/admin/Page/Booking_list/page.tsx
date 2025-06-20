@@ -2,8 +2,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+type Booking = {
+  id: number;
+  user?: { name?: string };
+  tour?: { title?: string };
+  status?: string;
+  number_of_people?: number;
+  booking_date?: string;
+};
+
 const BookingList = () => {
-  const [bookings, setBookings] = useState([]);
+  const [bookings, setBookings] = useState<Booking[]>([]);
   const [error, setError] = useState('');
 
   useEffect(() => {
