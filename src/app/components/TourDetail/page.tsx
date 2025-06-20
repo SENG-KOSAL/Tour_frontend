@@ -1,5 +1,5 @@
 "use client";
-
+import { Suspense } from "react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import BookingForm from "../BookingForm/page";
@@ -182,7 +182,9 @@ export default function TourDetail() {
               <h2 className="text-2xl font-bold text-gray-800 mb-6">
                 Book Your Adventure
               </h2>
-              <BookingForm />
+              <Suspense fallback={<div>Loading booking form...</div>}>
+                <BookingForm />
+              </Suspense>
             </div>
           </div>
         </div>
