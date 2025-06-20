@@ -7,29 +7,31 @@ import React, { useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
-  const form = useRef();
-  const sendEmail = (e) => {
+  const form = useRef<HTMLFormElement>(null);
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_qh7cn3m",
-        "template_osgwhnw",
-        form.current,
-        "DkqQZ1OKd61yzjsWa"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          alert("Message sent successfully!");
-        },
-        (error) => {
-          console.log(error.text);
-          alert("Failed to send message, please try again.");
-        }
-      );
+    if (form.current) {
+      emailjs
+        .sendForm(
+          "service_qh7cn3m",
+          "template_osgwhnw",
+          form.current,
+          "DkqQZ1OKd61yzjsWa"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            alert("Message sent successfully!");
+          },
+          (error) => {
+            console.log(error.text);
+            alert("Failed to send message, please try again.");
+          }
+        );
 
-    e.target.reset(); // Reset form fields after submission
+      (e.target as HTMLFormElement).reset(); // Reset form fields after submission
+    }
   };
   return (
     <div className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8">
