@@ -5,7 +5,19 @@ import { useRouter } from "next/navigation";
 
 export default function ToursPage() {
   const router = useRouter();
-  const [tours, setTours] = useState([]);
+  type Tour = {
+    tour_id: number;
+    title: string;
+    description: string;
+    image_url?: string;
+    price_per_person: number;
+    duration_days: number;
+    available_slots: number;
+    destination: string;
+    // Add any other fields your API returns
+  };
+
+  const [tours, setTours] = useState<Tour[]>([]);
   const [loading, setLoading] = useState(true);
 
   const handleBookingClick = (tourId: any) => {
