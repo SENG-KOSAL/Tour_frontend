@@ -20,7 +20,7 @@ export default function TourDetail() {
   useEffect(() => {
     if (tourId) {
       setIsLoading(true);
-      fetch(`http://localhost:8000/api/tours/${tourId}`)
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tours/${tourId}`)
         .then((res) => {
           if (!res.ok) {
             throw new Error(`Tour fetch failed with status ${res.status}`);

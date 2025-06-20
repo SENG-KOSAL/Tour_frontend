@@ -23,7 +23,7 @@ export default function TravelPackages() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/tours4?limit=3")
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/api/tours4?limit=3`)
       .then((res) => setTours(res.data.data))
       .catch((err) => console.error(err));
   }, []);

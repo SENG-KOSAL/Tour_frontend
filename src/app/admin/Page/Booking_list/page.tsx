@@ -16,7 +16,7 @@ const BookingList = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/bookings')
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/bookings`)
       .then(res => {
         setBookings(res.data.bookings);
       })

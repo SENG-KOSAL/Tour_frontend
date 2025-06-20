@@ -190,7 +190,14 @@ const Page = () => {
             Manage your travel experiences with ease
           </p>
         </div>
-
+        <div className="mb-6">
+          <a
+            href="/admin/Dashboard"
+            className="inline-flex items-center px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg shadow-md transition-colors"
+          >
+            ← Back to Dashboard
+          </a>
+        </div>
         {/* FORM - Card with subtle glow */}
         <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 mb-10 transition-all hover:shadow-xl">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">

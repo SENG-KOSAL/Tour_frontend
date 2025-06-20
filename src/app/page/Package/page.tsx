@@ -25,7 +25,7 @@ export default function ToursPage() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/tours")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tours`)
       .then((res) => res.json())
       .then((data) => {
         setTours(data.tours);

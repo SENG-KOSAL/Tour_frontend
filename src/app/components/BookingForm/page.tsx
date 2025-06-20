@@ -7,5 +7,5 @@ export default function TourDetailPage() {
     <Suspense fallback={<div>Loading tour detail...</div>}>
       <BookingForm />
     </Suspense>
-  );
+  );  
 }

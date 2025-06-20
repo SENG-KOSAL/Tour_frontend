@@ -29,7 +29,7 @@ export default function AuthPage() {
     setMessage('');
 
     try {
-      const res = await fetch('http://localhost:8000/api/login', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, password }),
@@ -58,33 +58,70 @@ export default function AuthPage() {
     }
   };
 
+  // const handleRegister = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   setMessage('');
+
+  //   try {
+  //     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`, {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+         
+  //       body: JSON.stringify({ ...form, role: 'customer' }),
+  //     });
+
+  //     const data = await res.json();
+
+  //     if (!res.ok) throw new Error(data.message || 'Registration failed');
+
+  //     setMessage('✅ Registration successful! You can now login.');
+  //     setMessageColor('text-green-500');
+  //     setForm({ name: '', email: '', phone: '', password: '' });
+  //     setActiveTab('login');
+  //   } catch (err: any) {
+  //     setMessage(`❌ ${err.message}`);
+  //     setMessageColor('text-red-500');
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setMessage('');
+  e.preventDefault();
+  setLoading(true);
+  setMessage('');
 
-    try {
-      const res = await fetch('http://localhost:8000/api/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, role: 'customer' }),
-      });
+  // Password length validation
+  if (form.password.length < 6) {
+    setMessage('❌ Password must be at least 6 characters');
+    setMessageColor('text-red-500');
+    setLoading(false);
+    return;
+  }
 
-      const data = await res.json();
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...form, role: 'customer' }),
+    });
 
-      if (!res.ok) throw new Error(data.message || 'Registration failed');
+    const data = await res.json();
 
-      setMessage('✅ Registration successful! You can now login.');
-      setMessageColor('text-green-500');
-      setForm({ name: '', email: '', phone: '', password: '' });
-      setActiveTab('login');
-    } catch (err: any) {
-      setMessage(`❌ ${err.message}`);
-      setMessageColor('text-red-500');
-    } finally {
-      setLoading(false);
-    }
-  };
+    if (!res.ok) throw new Error(data.message || 'Registration failed');
+
+    setMessage('✅ Registration successful! You can now login.');
+    setMessageColor('text-green-500');
+    setForm({ name: '', email: '', phone: '', password: '' });
+    setActiveTab('login');
+  } catch (err: any) {
+    setMessage(`❌ ${err.message}`);
+    setMessageColor('text-red-500');
+  } finally {
+    setLoading(false);
+  }
+};
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-indigo-50 p-4 pt-20">
       <motion.div 

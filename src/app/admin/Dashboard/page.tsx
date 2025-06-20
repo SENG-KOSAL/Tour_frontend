@@ -153,7 +153,7 @@ const Page = () => {
 
       try {
         setLoading(true);
-        const res = await fetch("http://localhost:8000/api/admin/dashboard", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/dashboard`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -189,7 +189,7 @@ const Page = () => {
     
     try {
       const token = localStorage.getItem("authToken");
-      const res = await fetch(`http://localhost:8000/api/tours/${tourId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tours/${tourId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -338,11 +338,11 @@ const Page = () => {
           )}
         </div>
 
-        {error && (
+        {/* {error && (
           <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">
             <p>{error}</p>
           </div>
-        )}
+        )} */}
 
         {renderContent()}
       </div>
