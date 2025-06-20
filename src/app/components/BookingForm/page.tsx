@@ -6,7 +6,17 @@ export default function BookingForm() {
   const searchParams = useSearchParams();
   const tourId = searchParams.get("tour_id");
 
-  const [tour, setTour] = useState(null);
+  type Tour = {
+    id: string;
+    title: string;
+    destination: string;
+    duration_days: number;
+    price_per_person: number;
+    image_url?: string;
+    // add other properties as needed
+  };
+
+  const [tour, setTour] = useState<Tour | null>(null);
   const [numberOfPeople, setNumberOfPeople] = useState(1);
   const [bookingDate, setBookingDate] = useState("");
   const [message, setMessage] = useState("");
