@@ -110,7 +110,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Logout from "@/app/components/Logout/page";
-import { FiHome, FiMap, FiCalendar, FiUsers, FiSettings, FiBarChart2, FiPlus, FiEdit2, FiTrash2 } from "react-icons/fi";
+import { FiHome, FiMap, FiCalendar, FiUsers, FiPlus } from "react-icons/fi";
 import Image from "next/image";
 import AdminTourCards from "../components/cardTourAdmin/page";
 import BookingListPage from "../Page/Booking_list/page";
@@ -459,10 +459,15 @@ const TourCard = ({ tour }: { tour: Tour }) => (
 // );
 
 
-
+type NavItemProps = {
+  icon: React.ReactNode;
+  children: React.ReactNode;
+  active: boolean;
+  onClick: () => void;
+};
 
 // Reusable Components
-const NavItem = ({ icon, children, active, onClick }) => (
+const NavItem : React.FC<NavItemProps> = ({ icon, children, active, onClick }) => (
   <button
     onClick={onClick}
     className={`flex items-center w-full px-4 py-3 text-left ${active ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-500' : 'text-gray-600 hover:bg-gray-50'}`}
