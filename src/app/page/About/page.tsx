@@ -6,9 +6,9 @@ export default function AboutPage() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <div className="relative h-96 w-full">
+      <div className="relative h-106 w-full">
         <Image
-          src="/about/ChatGPT Image Jun 13, 2025, 02_34_45 PM.png" // Replace with your tour company hero image
+          src="/about/snowy-mountain-nature-river.jpg" // Replace with your tour company hero image
           alt="About Our Tour Company"
           fill
           className="object-cover"
