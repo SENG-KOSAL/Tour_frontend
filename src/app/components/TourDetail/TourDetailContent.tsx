@@ -2,13 +2,8 @@
 import { Suspense } from "react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import BookingForm from "../../BookingForm/page";
-import {
-  FaMapMarkerAlt,
-  
-  FaUsers,
-  FaStar,
-} from "react-icons/fa";
+import BookingForm from "../BookingForm/page";
+import { FaMapMarkerAlt, FaUsers, FaStar } from "react-icons/fa";
 
 export default function TourDetail() {
   const searchParams = useSearchParams();
@@ -36,6 +31,7 @@ export default function TourDetail() {
           console.error("Error fetching tour:", err.message);
           setMessage("Tour could not be loaded.");
           setIsLoading(false);
+          setIsClient(true)
         });
     }
   }, [tourId]);
@@ -190,4 +186,7 @@ export default function TourDetail() {
       </div>
     </div>
   );
+}
+function setIsClient(arg0: boolean) {
+  throw new Error("Function not implemented.");
 }

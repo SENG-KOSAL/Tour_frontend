@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -41,6 +41,7 @@ export default function BookingForm() {
           console.error("Error fetching tour:", err.message);
           setMessage("Tour could not be loaded.");
           setIsLoading(false);
+           setIsClient(true)
         });
     }
   }, [tourId]);
@@ -458,3 +459,7 @@ export default function BookingForm() {
     </>
   );
 }
+function setIsClient(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
+

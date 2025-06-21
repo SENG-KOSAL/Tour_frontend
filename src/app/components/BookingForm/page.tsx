@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import BookingForm from "./BookingFormContent/page";
+import BookingForm from "./BookingFormContent";
 
 
 export default function TourDetailPage() {
