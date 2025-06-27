@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-
+import Link from 'next/link';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -39,14 +39,14 @@ export default function Navbar() {
           {/* Links */}
           <div className="hidden md:flex justify-center space-x-10 col-span-1">
             {navLinks.map(link => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="text-gray-700 font-medium relative group transition"
               >
                 {link.label}
                 <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-sky-600 transition-all group-hover:w-full"></span>
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -61,12 +61,12 @@ export default function Navbar() {
                 Logout
               </button>
             ) : (
-              <a
+              <Link
                 href="/components/Login_register"
                 className="hidden md:inline-block bg-sky-600 text-white px-5 py-1.5 rounded-full font-medium hover:bg-sky-700 transition"
               >
                 Login
-              </a>
+              </Link>
             )}
 
             {/* Mobile menu icon */}
@@ -84,13 +84,13 @@ export default function Navbar() {
         <div className="md:hidden bg-white shadow-md">
           <div className="px-4 py-4 space-y-3">
             {navLinks.map(link => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="block text-gray-700 font-medium hover:text-sky-600 transition"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             {isLoggedIn ? (
               <button
@@ -100,12 +100,12 @@ export default function Navbar() {
                 Logout
               </button>
             ) : (
-              <a
+              <Link
                 href="/components/Login_register"
                 className="block bg-sky-600 text-white text-center px-4 py-2 rounded hover:bg-sky-700"
               >
                 Login
-              </a>
+              </Link>
             )}
           </div>
         </div>
